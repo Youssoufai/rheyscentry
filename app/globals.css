@@ -1,26 +1,306 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("/fonts/bodoni-moda.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bodoni Moda";
+  src: url("/fonts/bodoni-moda-italic.woff2") format("woff2");
+  font-weight: 400 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/fonts/outfit.woff2") format("woff2");
+  font-weight: 300 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --header-h: 4rem;
+  --background: #080808;
+  --foreground: #f4f0e8;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 4.5rem;
+  }
 }
 
 @theme inline {
+  --color-obsidian: #080808;
+  --color-ink: #111113;
+  --color-graphite: #1b1b1e;
+  --color-steel: #3c3b38;
+  --color-silver: #b7b3ab;
+  --color-mist: #ddd7cc;
+  --color-ivory: #f4f0e8;
+  --color-paper: #f6f3ec;
+  --color-crimson: #8e1c2b;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Outfit", "Liberation Sans", "Noto Sans", sans-serif;
+  --font-display: "Bodoni Moda", "Liberation Serif", Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  background: #080808;
+  scroll-padding-top: var(--header-h);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #080808;
+  color: #f4f0e8;
+  font-family: "Outfit", "Liberation Sans", "Noto Sans", sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #8e1c2b;
+  color: #f4f0e8;
+}
+
+:focus-visible {
+  outline: 2px solid #8e1c2b;
+  outline-offset: 3px;
+}
+
+.shell {
+  width: min(100% - 2.5rem, 90rem);
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .shell {
+    width: min(100% - 5rem, 90rem);
+  }
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #b7b3ab;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0 1.35rem;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-light {
+  background: #f4f0e8;
+  color: #080808;
+}
+
+.btn-light:hover {
+  background: #ffffff;
+}
+
+.btn-dark {
+  background: #080808;
+  color: #f4f0e8;
+}
+
+.btn-dark:hover {
+  background: #1b1b1e;
+}
+
+.btn-ghost {
+  border: 1px solid rgba(244, 240, 232, 0.42);
+  color: #f4f0e8;
+}
+
+.btn-ghost:hover {
+  border-color: #f4f0e8;
+  background: rgba(244, 240, 232, 0.06);
+}
+
+.btn-line {
+  border: 1px solid rgba(8, 8, 8, 0.28);
+  color: #080808;
+}
+
+.btn-line:hover {
+  border-color: #080808;
+  background: rgba(8, 8, 8, 0.04);
+}
+
+.chip {
+  min-height: 2.75rem;
+  border: 1px solid rgba(244, 240, 232, 0.16);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #b7b3ab;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.chip:has(:checked),
+.chip[aria-checked="true"] {
+  border-color: #f4f0e8;
+  background: #f4f0e8;
+  color: #080808;
+}
+
+.field {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(244, 240, 232, 0.28);
+  background: transparent;
+  padding: 0.85rem 0;
+  color: #f4f0e8;
+  font-size: 1rem;
+}
+
+.field:focus {
+  outline: none;
+  border-bottom-color: #f4f0e8;
+}
+
+.field[aria-invalid="true"] {
+  border-bottom-color: #8e1c2b;
+}
+
+select.field {
+  border-radius: 0;
+}
+
+.zoom-frame {
+  overflow: hidden;
+}
+
+.zoom-target {
+  transition: transform 0.9s ease;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .zoom-frame:hover .zoom-target,
+  .zoom-frame:focus-visible .zoom-target {
+    transform: scale(1.045);
+  }
+}
+
+.hero-drift {
+  animation: hero-drift 36s ease-out forwards;
+}
+
+@keyframes hero-drift {
+  from {
+    transform: scale(1.12) translate3d(1.2%, 0, 0);
+  }
+  to {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+}
+
+.rise {
+  animation: rise 1.05s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.rise-1 { animation-delay: 0.12s; }
+.rise-2 { animation-delay: 0.28s; }
+.rise-3 { animation-delay: 0.46s; }
+.rise-4 { animation-delay: 0.62s; }
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.4rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(1.6rem);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+.fade-frame {
+  animation: fade-frame 0.45s ease;
+}
+
+@keyframes fade-frame {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.cinematic .shift {
+  transform: translate3d(0, var(--shift, 0px), 0) scale(1.08);
+}
+
+.site-header {
+  background: transparent;
+}
+
+.site-header.is-solid,
+.site-header[data-scrolled="true"] {
+  background: rgba(8, 8, 8, 0.92);
+  border-bottom: 1px solid rgba(244, 240, 232, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-drift,
+  .rise,
+  .fade-frame,
+  .js .reveal {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .cinematic .shift,
+  .zoom-target {
+    transform: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@media (hover: hover) {
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2a2926;
+  }
 }
