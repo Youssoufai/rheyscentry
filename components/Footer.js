@@ -57,7 +57,7 @@ export default function Footer() {
 
       <div className="shell flex flex-col gap-6 border-t border-white/10 py-6 md:flex-row md:items-end md:justify-between">
         <p className="max-w-xl text-xs leading-6 text-silver">
-          Velocity Motors is not a trading company. Vehicles are not for sale. Prices,
+          DoctorAutomobiles Motors is not a trading company. Vehicles are not for sale. Prices,
           mileages, and contact details are examples. Photography is from Unsplash and shows
           the models, not stock held by this demonstration.
         </p>

@@ -56,7 +56,7 @@ export default function Header() {
       }`}
     >
       <div className="flex h-full items-center justify-between gap-3 px-4 sm:px-6 md:px-10">
-        <Link href="/" aria-label="Velocity Motors, home" onClick={() => setOpen(false)}>
+        <Link href="/" aria-label="DoctorAutomobiles Motors, home" onClick={() => setOpen(false)}>
           <Mark compact />
         </Link>
 
